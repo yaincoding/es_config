@@ -72,7 +72,11 @@ http.port: 9200
 # Pass an initial list of hosts to perform discovery when this node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.seed_hosts: ["host1", "host2"]
+#discovery.seed_hosts: ["host1", "host2"]
+discovery.seed_hosts:
+  - 3.36.71.17:9300
+  - 52.78.177.57:9300
+  - 15.164.97.31:9300
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
