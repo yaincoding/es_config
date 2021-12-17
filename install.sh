@@ -12,4 +12,4 @@ echo autorefresh=1 >> /etc/yum.repos.d/elasticsearch.repo
 echo type=rpm-md >> /etc/yum.repos.d/elasticsearch.repo
 
 sudo yum install -y elasticsearch-7.16.1
-
+sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch discovery-ec2
