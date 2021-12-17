@@ -20,7 +20,6 @@ cluster.name: yaco_cluster
 #
 # Use a descriptive name for the node:
 
-#######변경 필요######
 node.name: ${HOSTNAME}
 #
 # Add custom attributes to the node:
@@ -54,7 +53,6 @@ bootstrap.memory_lock: true
 # By default Elasticsearch is only accessible on localhost. Set a different
 # address here to expose this node on the network:
 #
-#network.host: 192.168.0.1
 
 network.bind_host: 0.0.0.0
 network.publish_host: _ec2_
@@ -76,7 +74,6 @@ http.port: 9200
 discovery.seed_providers: ec2
 discovery.ec2.groups: es
 discovery.ec2.any_group: true
-discovery.ec2.host_type: private_ip
 
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
