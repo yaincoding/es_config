@@ -35,8 +35,3 @@ cp ./jvm.options /etc/elasticsearch
 rm /etc/elasticsearch/elasticsearch.yml
 cp ./$1/elasticsearch.yml /etc/elasticsearch
 
-# elasticsearch 관련 파일 소유권 'elasticsearch' 리눅스 사용자로 변경
-chown elasticsearch:elasticsearch -R /usr/share/elasticsearch
-chown elasticsearch:elasticsearch -R /var/lib/elasticsearch
-chown elasticsearch:elasticsearch -R /var/log/elasticsearch
-chown elasticsearch:elasticsearch -R /etc/elasticsearch
