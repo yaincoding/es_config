@@ -7,6 +7,10 @@
 ## i. bootstrap -> bootstrap 모드로 클러스터 실행
 ## ii. discovery -> cluster bootstrap 없이 yaco_cluster 찾아서 합류
 
+###실행 명령 예시###
+###ex1) sudo sh install.sh bootstrap###
+###ex2) sudo sh install.sh discovery###
+
 #timezone 변경
 cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
