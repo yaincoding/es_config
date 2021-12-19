@@ -1,9 +1,14 @@
 #!/usr/bin/bash
 
-#timezone 변경
-sudo cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+### 엘라스틱서치 구동환경 세팅 파일입니다.
+### 이 스크립트는 sudo 권한으로 실행해야 합니다.
 
-#super user로 실행
+### parameter1 ###
+## i. bootstrap -> bootstrap 모드로 클러스터 실행
+## ii. discovery -> cluster bootstrap 없이 yaco_cluster 찾아서 합류
+
+#timezone 변경
+cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 yum install -y java-1.8.0-openjdk-devel.x86_64
 
@@ -17,4 +22,17 @@ echo autorefresh=1 >> /etc/yum.repos.d/elasticsearch.repo
 echo type=rpm-md >> /etc/yum.repos.d/elasticsearch.repo
 
 yum install -y elasticsearch-7.16.1
+
 /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch discovery-ec2
+
+rm /etc/elasticsearch/jvm.options
+cp ./jvm.options /etc/elasticsearch
+
+rm /etc/elasticsearch/elasticsearch.yml
+cp ./$1/elasticsearch.yml /etc/elasticsearch
+
+# elasticsearch 관련 파일 소유권 'elasticsearch' 리눅스 사용자로 변경
+chown elasticsearch:elasticsearch -R /usr/share/elasticsearch
+chown elasticsearch:elasticsearch -R /var/lib/elasticsearch
+chown elasticsearch:elasticsearch -R /var/log/elasticsearch
+chown elasticsearch:elasticsearch -R /etc/elasticsearch
