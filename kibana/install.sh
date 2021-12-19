@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+#timezone 변경
+sudo cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
 #super user로 실행
 
 echo [kibana-7.x] >> /etc/yum.repos.d/kibana.repo

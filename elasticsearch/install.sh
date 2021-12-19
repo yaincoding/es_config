@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+#timezone 변경
+sudo cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
 #super user로 실행
 
 yum install -y java-1.8.0-openjdk-devel.x86_64
