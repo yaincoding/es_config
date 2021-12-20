@@ -11,6 +11,13 @@
 ###ex1) sudo ./install.sh bootstrap###
 ###ex2) sudo ./install.sh discovery###
 
+MODE=$1
+
+if [ "$MODE" != "bootstrap" ] && [ "$MODE" != "discovery" ]
+then
+  echo "The only argument must be 'bootstrap' or 'discovery'"
+fi
+
 #timezone 변경
 cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
