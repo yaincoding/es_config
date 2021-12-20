@@ -38,7 +38,7 @@ echo type=rpm-md >> /etc/yum.repos.d/elasticsearch.repo
 yum install -y elasticsearch-7.16.1
 
 #discovery-ec2 플러그인 설치
-if [ "$MODE" == "discovery" ]
+if [ "$MODE" = "discovery" ]
 then
   /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch discovery-ec2
 fi
