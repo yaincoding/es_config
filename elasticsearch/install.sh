@@ -21,8 +21,10 @@ fi
 #timezone 변경
 cp -p /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
+#java8 설치
 yum install -y java-1.8.0-openjdk-devel.x86_64
 
+#elasticsearch repo 설정
 echo [elasticsearch-7.x] >> /etc/yum.repos.d/elasticsearch.repo
 echo name=Elasticsearch repository for 7.x packages >> /etc/yum.repos.d/elasticsearch.repo
 echo baseurl=https://artifacts.elastic.co/packages/7.x/yum >> /etc/yum.repos.d/elasticsearch.repo
@@ -32,9 +34,14 @@ echo enabled=1 >> /etc/yum.repos.d/elasticsearch.repo
 echo autorefresh=1 >> /etc/yum.repos.d/elasticsearch.repo
 echo type=rpm-md >> /etc/yum.repos.d/elasticsearch.repo
 
+#elasticsearch-7.16.1 설치
 yum install -y elasticsearch-7.16.1
 
-/usr/share/elasticsearch/bin/elasticsearch-plugin install --batch discovery-ec2
+#discovery-ec2 플러그인 설치
+if [ "$MODE" == "discovery" ]
+then
+  /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch discovery-ec2
+fi
 
 rm /etc/elasticsearch/jvm.options
 cp ./jvm.options /etc/elasticsearch
@@ -47,3 +54,7 @@ chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
 chown -R elasticsearch:elasticsearch /var/log/elasticsearch
 chown -R elasticsearch:elasticsearch /etc/elasticsearch
+
+#bootstrap 비밀번호 yacopassword로 설정
+printf "yacopassword" | sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add "bootstrap.password" -x
+
