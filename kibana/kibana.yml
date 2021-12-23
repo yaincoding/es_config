@@ -62,6 +62,9 @@ elasticsearch.hosts:
 #elasticsearch.ssl.certificate: /path/to/your/client.crt
 #elasticsearch.ssl.key: /path/to/your/client.key
 
+elasticsearch.username: kibana
+elasticsearch.password: kibanapwd
+
 # Optional setting that enables you to specify a path to the PEM file for the certificate
 # authority for your Elasticsearch instance.
 #elasticsearch.ssl.certificateAuthorities: [ "/path/to/your/CA.pem" ]
