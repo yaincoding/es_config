@@ -16,8 +16,8 @@ echo type=rpm-md >> /etc/yum.repos.d/kibana.repo
 
 yum install -y kibana-7.16.1
 
-rm /etc/elasticsearch/elasticsearch.yml
-cp ./$1/elasticsearch.yml /etc/elasticsearch
+rm /etc/kibana/kibana.yml
+cp ./kibana/kibana.yml /etc/kibana/
 
 #elasticsearch 관련 파일 소유권 elasticsearch로 수정
 chown -R kibana:kibana /usr/share/kibana
