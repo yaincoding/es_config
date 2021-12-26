@@ -55,10 +55,10 @@ chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
 chown -R elasticsearch:elasticsearch /var/log/elasticsearch
 chown -R elasticsearch:elasticsearch /etc/elasticsearch
 
-#bootstrap 비밀번호 yacopassword로 설정
+#bootstrap 비밀번호 yacopass로 설정
 
 if [ "$MODE" = "bootstrap" ]
 then
-  printf "yacopassword" | sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add "bootstrap.password" -x
+  printf "yacopass" | sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add "bootstrap.password" -x
 fi
 
