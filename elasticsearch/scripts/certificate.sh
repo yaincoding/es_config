@@ -6,9 +6,9 @@
 #certificates 생성
 /usr/share/elasticsearch/bin/elasticsearch-certutil cert \
 --ca "/etc/elasticsearch/elastic-stack-ca.p12" \
---ca-pass "<ca password>" \
+--ca-pass "yacopass" \
 --out "/etc/elasticsearch/elastic-certificates.p12" \
---pass "<password>"
+--pass "yacopass"
 
 #elasticsearch node 접근 가능하도록 권한 elasticsearch 계정으로 변경
 chown -R elasticsearch:elasticsearch /etc/elasticsearch/elastic-stack-ca.p12
