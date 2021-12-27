@@ -49,16 +49,6 @@ cp ./jvm.options /etc/elasticsearch
 rm /etc/elasticsearch/elasticsearch.yml
 cp ./$1/elasticsearch.yml /etc/elasticsearch
 
-# security TLS/SSL 적용
-if [ "$MODE" = "bootstrap" ]
-  /usr/share/elasticsearch/bin/elasticsearch-certutil ca --out "/etc/elasticsearch/elastic-stack-ca.p12" --pass "yacopass"
-  /usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca "/etc/elasticsearch/elastic-stack-ca.p12" --ca-pass "yacopass"  --out "/etc/elasticsearch/elastic-certificates" --pass "yacopass"
-fi
-
-# certificates 패스워드 elasticsearch keystore에 저장
-printf "yacopass" | /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
-printf "yadcopass" | /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
-
 #elasticsearch 관련 파일 소유권 elasticsearch로 수정
 chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
